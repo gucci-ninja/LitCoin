@@ -1,5 +1,19 @@
 
 
+/*exports.initGame = function(sio, socket) {
+    io = socket;
+    
+}
+gameSocket = socket ;
+gameSocket.pingTimeout = 3000;
+gameSocket.reconnection = false;
+gameSocket.emit('connected')
+
+numPlayers++;
+console.log('numplayers:' + numPlayers);
+*/
+
+
 //game logic
 /*
 var money = 1000;
