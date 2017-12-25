@@ -1,0 +1,22 @@
+#options {
+
+    max-width: 700px;
+    margin: auto;
+    text-align: center;
+    vertical-align: center;
+}
+
+.btn {
+    font-size: 48px;
+    font-weight: 700;
+    background-color: navy;
+    color: white;
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    vertical-align: center;
+}
