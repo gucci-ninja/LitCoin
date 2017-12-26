@@ -17,34 +17,36 @@ socket.on('playerson', function(data){
 socket.on('connect', function(){
     
     // Make some API requests
-    data = [
-        {
-            name: 'BitCoin',
-            symbol: 'BTC',
-            price: '1',
-            shares: '0'
-        },
+    
+   var coins = [
+       ['BTC', 'Bitcoin'], 
+       ['ETH', 'Ethereum'],
+       ['LTC', 'Litecoin'],
+       ['XRP', 'Ripple'],
+       ['DASH', 'Dash'],
+       ['XMR', 'Monero'],
+       ['OMG', 'OmiseGO'],
+       ['DOGE', 'Dogecoin'],
+       ['NXT', 'Nxt'],
+       ['ZEC', 'ZCash'],
+   ];
 
-        {
-            name: 'LiteCoin',
-            symbol: 'LTC',
-            price: '2',
-            shares: '0'
-        },
+   var data = []
+   // create data
+   for (var i in coins){
+       data.push({
+           name: coins[i][1],
+           symbol: coins[i][0],
+           price: 1,
+           shares: 0
+       });
+   };
 
-        {
-            name: 'Ethereum',
-            symbol: 'ETM',
-            price: '3',
-            shares: '0'
-        }
-    ];
     var total = 1000;    
     money.innerHTML = '<h1> Money: '+total+'</h1>';
     var scroll_text = '';
     for (i = 0; i < data.length; i++){
         scroll_text += data[i].symbol + ' ' + data[i].price + ' | '
-
     }
 
     scroll.innerHTML = '<marquee scrollamount="20"><h1>'+scroll_text+'</h1></marquee>';
