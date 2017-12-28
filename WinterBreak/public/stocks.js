@@ -48,21 +48,11 @@ socket.on('update', function(data){
     scroll.innerHTML = '<marquee scrollamount="20"><h1>'+scroll_text+'</h1></marquee>'
 });
 
+
 socket.on('connect', function(){
     
    // create data
-   
-
-   
-
     var total = 1000;    
     money.innerHTML = '<h1> Money: '+total+'</h1>';
-    
-
-    
-    scroll.innerHTML = '<marquee scrollamount="20"><h1>'+prices[1]+'</h1></marquee>';
-        // Make some API requests
-
-   
     
 });

@@ -19,9 +19,10 @@ app.use(express.static('public'));
 var io = socket(server);
 var players = 0;
 var from = 'BTC,ETH,LTC,XRP,DASH,XMR,OMG,DOGE,NXT,ZEC';
-var to = 'USD';
+var info = '';
 
 // Supply the data for prices, change in currency, 
+
 https.get('https://min-api.cryptocompare.com/data/pricemultifull?fsyms='+from+'&tsyms=USD', (res) => {
     const { statusCode } = res;
     const contentType = res.headers['content-type'];
@@ -48,33 +49,37 @@ https.get('https://min-api.cryptocompare.com/data/pricemultifull?fsyms='+from+'&
       try {
         const parsedData = JSON.parse(rawData);
         console.log(parsedData);
-        var info = parsedData;
+        info = parsedData;
       } catch (e) {
         console.error(e.message);
       }
     });
   }).on('error', (e) => {
     console.error(`Got error: ${e.message}`);
-  });
-
-  
+  });  
 
 // when connection is made, function is called
 // index.html -> runs stocks.js -> makes connection 
 io.on('connection', function(socket) {
     console.log("made socket connection", socket.id);
+    var prices = [];
+    var changes = [0,1,2,3,4,5,6,7,8,9];
+    
+    for (var i in info.RAW){
+        prices.push(info.RAW[i].USD.PRICE);
+    }
+    socket.emit('update', {
+        prices: prices,
+        changes: changes
+        });     
+        
+
     // adds to the players online counter
     io.sockets.emit('playerson', {
         players: ++players
     });
-    var prices = [0,1,2,3,4,5,6,7,8,9];
-    var changes = [0,1,2,3,4,5,6,7,8,9];
+
     
-    io.sockets.emit('update', {
-      prices: prices,
-      changes: changes
-      });
-      console.log(prices[1]);
     
     socket.on('disconnect', function(){
         io.sockets.emit('playerson', {
