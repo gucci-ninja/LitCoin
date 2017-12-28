@@ -8,9 +8,8 @@ var socket = io.connect('http://localhost:4000');
 var players = document.getElementById('players'); // output
 var money = document.getElementById('money');
 var scroll = document.getElementById('scroll');
-var cryptodata = [];
+
 var prices = [];
-var changes = [];
 var coins = [
     ['BTC', 'Bitcoin'], 
     ['ETH', 'Ethereum'],
@@ -24,28 +23,27 @@ var coins = [
     ['ZEC', 'ZCash'],
 ];
 
+var cryptodata = [];
+for (i = 0; i < coins.length; i++){
+    cryptodata.push({
+        name: coins[i][1],
+        symbol: coins[i][0],
+        owned: 0.0
+    });
+};
+
 // listen for events, when the backend finds out that click occured, frontend posts number
 socket.on('playerson', function(data){
     players.innerHTML = '<p>Players online: '+data.players+'</p>';
 });
 
 socket.on('update', function(data){
-    prices = data.prices;
-    changes = data.changes;
-    for (var i in coins){
-        cryptodata.push({
-            name: coins[i][1],
-            symbol: coins[i][0],
-            price: prices[i],
-            change: changes[i],
-            shares: 0
-        });
-    };
+    var prices = data.prices;
     var scroll_text = '';
     for (i = 0; i < cryptodata.length; i++){
-        scroll_text += cryptodata[i].symbol + ' ' + cryptodata[i].price + ' | '
+        scroll_text += cryptodata[i].symbol + ' ' + prices[i] + ' | '
     };
-    scroll.innerHTML = '<marquee scrollamount="20"><h1>'+scroll_text+'</h1></marquee>'
+    scroll.innerHTML = '<marquee BEHAVIOR="alternate" SCROLLAMOUNT="20"><h1>'+scroll_text+'</h1></marquee>'
 });
 
 
