@@ -7,19 +7,26 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
         <link href="/styles.css"rel="stylesheet" />
     </head>
-    <body background="IndexBackground.jpg" onload="load_home()">
+    <body background="IndexBackground3.jpg" onload="load_home()">
         <div id="scroll"></div>
-        <div id="players"></div>
-        <div id="money"></div>            
-        <h1>Portfolio Value: <span id="portfolio">0</span></h1>
-
-        </div>
-        <div id="options">
-            <a class="btn btn-primary btn-lg" href="#" role="button">Buy</a>
-            <a class="btn btn-primary btn-lg" href="#" role="button">Sell</a>
-            <button id="buy">BUYY</button>
-        </div>
         
+                  
+        
+        <div class="row">
+            <div class="column">
+                <a class="btn btn-primary btn-lg" href="#" role="button">Buy</a>
+            </div>
+            <div class="column">
+                <h1>Portfolio Value: <span id="portfolio">0</span></h1>
+                <div id="money"></div>  
+                <div id="players"></div>
+            </div>
+            <div class="column">
+    
+                <a class="btn btn-primary btn-lg" href="#" role="button">Sell</a>
+            </div>
+        </div>
+    
         <script src="/stocks.js"></script>
 
     </body>

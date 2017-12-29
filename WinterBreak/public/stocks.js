@@ -1,15 +1,12 @@
 // Make connection for client-side
 var socket = io.connect('http://localhost:4000');
 
-
-//  P1IPN8JROHA6T8KB Alpha Vantage Key
-// https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_INTRADAY&symbol=BTC&market=CAD&apikey=P1IPN8JROHA6T8KB
-// when someone clicks BUYY this will do something
+// DOM elements
 var players = document.getElementById('players'); // output
 var money = document.getElementById('money');
 var scroll = document.getElementById('scroll');
 
-var prices = [];
+// All coins
 var coins = [
     ['BTC', 'Bitcoin'], 
     ['ETH', 'Ethereum'],
@@ -32,6 +29,8 @@ for (i = 0; i < coins.length; i++){
     });
 };
 
+
+
 // listen for events, when the backend finds out that click occured, frontend posts number
 socket.on('playerson', function(data){
     players.innerHTML = '<p>Players online: '+data.players+'</p>';
@@ -39,11 +38,19 @@ socket.on('playerson', function(data){
 
 socket.on('update', function(data){
     var prices = data.prices;
+    var changes = data.changes;
     var scroll_text = '';
     for (i = 0; i < cryptodata.length; i++){
-        scroll_text += cryptodata[i].symbol + ' ' + prices[i] + ' | '
+        var colour = '';
+        if (changes[i]>=0){
+            colour = '##7CFC00';
+        }
+        else  {
+            colour = 'red';
+        }
+        scroll_text += cryptodata[i].symbol + ' ' + prices[i] + '<font color="'+colour+'"> '+changes[i]+'</font> | ';
     };
-    scroll.innerHTML = '<marquee BEHAVIOR="alternate" SCROLLAMOUNT="20"><h1>'+scroll_text+'</h1></marquee>'
+    scroll.innerHTML = '<marquee BEHAVIOR="alternate" SCROLLAMOUNT="4"><strong>'+scroll_text+'</strong></marquee>'
 });
 
 

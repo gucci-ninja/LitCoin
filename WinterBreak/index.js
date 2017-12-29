@@ -46,16 +46,21 @@ function get() {
 
 function update(){
     var prices = [];
+    var changes = [];
     for (var i in info.RAW){
-        prices.push(info.RAW[i].USD.PRICE);
+        var price = info.RAW[i].USD.PRICE;
+        var open = info.RAW[i].USD.OPEN24HOUR;
+        prices.push(price);
+        changes.push(Math.round((price-open)*100/open * 10 ) / 10);
     }
-    console.log(prices[1]);
+
     io.sockets.emit('update', {
         prices: prices,
+        changes: changes
      });
 
 };    
-setInterval(get, 22000);
+setInterval(get, 10000);
 
 // when connection is made, function is called
 // index.html -> runs stocks.js -> makes connection 
