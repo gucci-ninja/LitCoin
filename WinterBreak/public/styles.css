@@ -51,11 +51,27 @@ body {
     background-color: rgba(0,0,0,0.5);
 }
 
-
-
 @media (max-width: 600px) {
     .column {
         width: 100%;
     }
 }
 
+.form-control {
+    width: 50%;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+
+#spending {
+    width: 50%;
+    margin: auto;
+    height: 40px;
+    background-color: rgba(105, 105, 114, 0.5);
+    box-shadow: 2px 4px 8px 2px rgba(0,0,0,0.3);
+    text-align: left;
+    padding: 5px 6px 
+
+}

@@ -68,7 +68,6 @@ io.on('connection', function(socket) {
     console.log("made socket connection", socket.id);
     get();
     
-
     // adds to the players online counter
     io.sockets.emit('playerson', {
         players: ++players

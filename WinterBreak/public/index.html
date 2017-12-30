@@ -8,22 +8,22 @@
         <link href="/styles.css"rel="stylesheet" />
     </head>
     <body background="IndexBackground3.jpg" onload="load_home()">
-        <div id="scroll"></div>
-        
-                  
-        
+        <div id="scroll"></div> 
         <div class="row">
             <div class="column">
-                <a class="btn btn-primary btn-lg" href="#" role="button">Buy</a>
+                <strong>Choose a cryptocurency to buy</strong>
+                <input type="text" class="form-control" placeholder="BTC" id="buying">
+                <input type="text" class="form-control" placeholder="0.5" id="buyNum">
+                <div id="spending"></div>
+                <a id= "buy" class="btn btn-primary btn-lg" href="#" role="button">Buy</a>
             </div>
             <div class="column">
-                <h1>Portfolio Value: <span id="portfolio">0</span></h1>
-                <div id="money"></div>  
+                <div id="money"></div>
+                <div id="portfolio"></div>                 
                 <div id="players"></div>
             </div>
             <div class="column">
-    
-                <a class="btn btn-primary btn-lg" href="#" role="button">Sell</a>
+                <a id="sell" class="btn btn-primary btn-lg" href="#" role="button">Sell</a>
             </div>
         </div>
     
