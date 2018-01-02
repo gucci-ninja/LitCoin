@@ -8,11 +8,10 @@ var https = require('https');
 var app = express();
 
 //for heroku
-var port = normalizePort(process.env.PORT || '4000');
-app.set('port', port);
+var port = process.env.PORT || '3000';
 
 // create server for sockets
-var server = app.listen(app.get('port'), function() {
+var server = app.listen(port, function() {
     console.log("Listening to request on port 4000")
 });
 
