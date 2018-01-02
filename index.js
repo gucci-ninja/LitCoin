@@ -7,11 +7,8 @@ var https = require('https');
 // Set up the app
 var app = express();
 
-//for heroku
-var port = process.env.PORT || '3000';
-
 // create server for sockets
-var server = app.listen(port, function() {
+var server = app.listen((process.env.PORT || 4000, function() {
     console.log("Listening to request on port 4000")
 });
 

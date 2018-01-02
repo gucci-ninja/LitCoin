@@ -1,5 +1,5 @@
 // Make connection for client-side
-var socket = io.connect();
+var socket = io();
 
 // DOM elements
 var players = document.getElementById('players'); // output
