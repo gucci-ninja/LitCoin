@@ -32,7 +32,6 @@ function get() {
         res.on('end', () => {
             try {
                 info = JSON.parse(rawData);
-                console.log(info);
             } catch (e) {
                 console.error(e.message);
             }
