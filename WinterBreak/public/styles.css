@@ -34,6 +34,7 @@ body {
 }
 
 .row {
+    padding-top: 100px;
     text-align: center;
     vertical-align: center;
 
