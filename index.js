@@ -8,7 +8,7 @@ var https = require('https');
 var app = express();
 
 // create server for sockets
-var server = app.listen((process.env.PORT || 4000, function() {
+var server = app.listen(process.env.PORT || 4000, function() {
     console.log("Listening to request on port 4000")
 });
 
