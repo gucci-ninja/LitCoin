@@ -2,7 +2,6 @@
 var express = require('express');
 var socket = require('socket.io');
 var https = require('https');
-var async = require('async');
 // var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
 // Set up the app
