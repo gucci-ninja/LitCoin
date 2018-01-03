@@ -27,10 +27,12 @@
 
 body {
     font-family: Helvetica, Arial, sans-serif;
-    background-size: 100%;
     color: white;
     min-width: 550px;
     margin: 0;
+    background: url("IndexBackground3.jpg") center center;
+    background-size: cover;
+    
 }
 
 .row {
