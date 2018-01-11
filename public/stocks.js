@@ -9,6 +9,7 @@ var buy = document.getElementById('buy');
 var sell = document.getElementById('sell');
 var buying = document.getElementById('buying');
 var buyNum = document.getElementById('buyNum');
+var sellNum = document.getElementById('sellNum');
 var spending = document.getElementById('spending');
 var total = 1000;
 var pVal = 0;
@@ -91,6 +92,18 @@ buy.addEventListener('click', function(){
         if (cryptodata[c].symbol === buying.value) {
             cryptodata[c].owned += parseFloat(buyNum.value);
             total = total - prices[c]*parseFloat(buyNum.value);
+            money.innerHTML = '<h1> Money: '+total+'<h1>';
+            break;
+        }
+    }
+});
+
+// listen for 'sell' event, when the backend finds out that click occured
+sell.addEventListener('click', function(){
+    for (var c in cryptodata){
+        if (cryptodata[c].symbol === selling.value) {
+            cryptodata[c].owned += parseFloat(sellNum.value);
+            total = total - prices[c]*parseFloat(sellNum.value);
             money.innerHTML = '<h1> Money: '+total+'<h1>';
             break;
         }
