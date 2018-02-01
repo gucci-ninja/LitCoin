@@ -11,9 +11,12 @@ var buying = document.getElementById('buying');
 var buyNum = document.getElementById('buyNum');
 var sellNum = document.getElementById('sellNum');
 var spending = document.getElementById('spending');
+var history = document.getElementById('history');
 var total = 1000;
 var pVal = 0;
 var prices = [];
+
+var history_string = "";
 
 // All coins
 var coins = [
@@ -79,7 +82,7 @@ socket.on('connect', function(){
 
 buyNum.onkeyup = function(){
     for (var c1 in cryptodata){
-        if(cryptodata[c1].symbol === buying.value){
+        if(cryptodata[c1].symbol === buying.options[buying.selectedIndex].value){
             var usd = parseFloat(buyNum.value)*prices[c1];
             break;
         }
@@ -89,11 +92,19 @@ buyNum.onkeyup = function(){
 // listen for 'buy' event, when the backend finds out that click occured
 buy.addEventListener('click', function(){
     for (var c in cryptodata){
-        if (cryptodata[c].symbol === buying.value) {
-            cryptodata[c].owned += parseFloat(buyNum.value);
-            total = total - prices[c]*parseFloat(buyNum.value);
-            money.innerHTML = '<h1> Money: '+total+'<h1>';
+        if (cryptodata[c].symbol === buying.options[buying.selectedIndex].value) {
+            if (total - prices[c]*parseFloat(buyNum.value) < 0) {
+                alert("you dont have enough money")
+            }
+            else {
+                cryptodata[c].owned += parseFloat(buyNum.value);
+                total = total - prices[c]*parseFloat(buyNum.value);
+                history_string = history_string + 'Bought '+buyNum.value+' '+buying.value;
+                money.innerHTML = '<h1> Money: '+total+'<h1>';
+                history.innerHTML = 'Transaction History'+history_string;
+            }
             break;
+            
         }
     }
 });
@@ -101,12 +112,16 @@ buy.addEventListener('click', function(){
 // listen for 'sell' event, when the backend finds out that click occured
 sell.addEventListener('click', function(){
     for (var c in cryptodata){
-        if (cryptodata[c].symbol === selling.value) {
-            cryptodata[c].owned += parseFloat(sellNum.value);
-            total = total - prices[c]*parseFloat(sellNum.value);
-            money.innerHTML = '<h1> Money: '+total+'<h1>';
+        if (cryptodata[c].symbol === selling.options[selling.selectedIndex].value) {
+            if (cryptodata[c].owned - parseFloat(sellNum.value) < 0) {
+                alert("you dont have enough "+cryptodata[c].symbol)
+            }
+            else {
+                cryptodata[c].owned -= parseFloat(sellNum.value);
+                total = total + prices[c]*parseFloat(sellNum.value);
+                money.innerHTML = '<h1> Money: '+total+'<h1>';
+            }
             break;
         }
     }
 });
-    

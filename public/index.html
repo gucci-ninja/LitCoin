@@ -10,28 +10,43 @@
     </head>
     <body>
         <div id="scroll"></div> 
-        
         <div class="container">
             <div class="row">
                 <div class="column">
-                    <strong>Choose a cryptocurency to buy</strong>
-                    <input type="text" class="form-control" placeholder="BTC" id="buying">
-                    <input type="text" class="form-control" placeholder="0.5" id="buyNum">
-                    <div id="spending"></div>
-                    <a id= "buy" class="btn btn-primary btn-lg" href="#" role="button">Buy</a>
+                    <form>
+                        <label for "buying">Choose a cryptocurency to buy</strong></label>  
+                        <select class="form-control" id="buying">
+                            <option value="BTC">BTC</option>
+                            <option value="ETH">ETH</option>
+                            <option value="DASH">DASH</option>
+                            <option value="DOGE">DOGE</option>
+                          </select>
+                        <input type="text" class="form-control" placeholder="0.5" id="buyNum">
+                        <div id="spending"></div>
+                        <a id= "buy" class="btn btn-primary btn-lg" href="#" role="button">Buy</a>
+                    </form>
                 </div>
                 <div class="column">
                     <div id="money"></div>
-                    <div id="portfolio"></div>                 
+                    <div id="portfolio"></div>
+                    <div id="history"></div>                 
                     <div id="players"></div>
                     <div align="center"><img src="litcoin.png" height="100" width="110"></div>
                 </div>
                 <div class="column">
-                    <strong>Choose a cryptocurency to sell</strong>
-                    <input type="text" class="form-control" placeholder="BTC" id="selling">
-                    <input type="text" class="form-control" placeholder="0.5" id="sellNum">
-                    <div id="spending"></div>
-                    <a id="sell" class="btn btn-primary btn-lg" href="#" role="button">Sell</a>
+                    <form>
+                        <label for "selling">Choose a cryptocurrency to sell</label>
+                        <select class="form-control" id="selling">
+                            <option value="BTC">BTC</option>
+                            <option value="ETH">ETH</option>
+                            <option value="DASH">DASH</option>
+                            <option value="DOGE">DOGE</option>
+                        </select>
+                        <input type="text" class="form-control" placeholder="0.5" id="sellNum">
+                        <div id="spending"></div>
+                        <a id="sell" class="btn btn-primary btn-lg" href="#" role="button">Sell</a>
+                    </form>
+
                 </div>
             </div>
         </div>

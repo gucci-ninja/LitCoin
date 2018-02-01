@@ -11,7 +11,7 @@ Demoed project for Concordia University Hackathon.
 
 - [x] Logo
 - [x] 'Buy' logic
-- [ ] 'Sell' logic
+- [x] 'Sell' logic
 - [ ] Transaction History
 - [ ] Breakdown of how much of each currency is owned
 - [ ] Ranking system between all players on
