@@ -98,7 +98,7 @@ buy.addEventListener('click', function(){
             }
             else {
                 cryptodata[c].owned += parseFloat(buyNum.value);
-                total = total - prices[c]*parseFloat(buyNum.value);
+                total = (total - prices[c]*parseFloat(buyNum.value)).toFixed(2);
                 history_string = history_string + 'Bought '+buyNum.value+' '+buying.value;
                 money.innerHTML = '<h1> Money: '+total+'<h1>';
                 history.innerHTML = 'Transaction History'+history_string;
@@ -118,7 +118,7 @@ sell.addEventListener('click', function(){
             }
             else {
                 cryptodata[c].owned -= parseFloat(sellNum.value);
-                total = total + prices[c]*parseFloat(sellNum.value);
+                total = (total + prices[c]*parseFloat(sellNum.value)).toFixed(2);
                 money.innerHTML = '<h1> Money: '+total+'<h1>';
             }
             break;
